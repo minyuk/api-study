@@ -1,5 +1,6 @@
 package com.apistudy.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,16 +16,20 @@ import static lombok.AccessLevel.PROTECTED;
 @NoArgsConstructor(access = PROTECTED)
 public class User {
 
-    @Id @GeneratedValue(strategy = IDENTITY)
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
     private String userName;
 
+    private String loginId;
+
     private String password;
 
-    public User(Long id, String userName, String password) {
-        this.id = id;
+    @Builder
+    public User(String userName, String loginId, String password) {
         this.userName = userName;
+        this.loginId = loginId;
         this.password = password;
     }
 }
