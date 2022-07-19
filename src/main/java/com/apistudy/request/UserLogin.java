@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 public class UserLogin {
 
     @NotBlank(message = "아이디를 입력해주세요.")
-    private String userName;
+    private String loginId;
 
     @NotBlank(message = "비밀번호를 입력해주세요.")
     private String password;
@@ -18,8 +18,8 @@ public class UserLogin {
     }
 
     @Builder
-    public UserLogin(String userName, String password) {
-        this.userName = userName;
+    public UserLogin(String loginId, String password) {
+        this.loginId = loginId;
         this.password = password;
     }
 }
