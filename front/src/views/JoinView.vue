@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 const userName = ref("")
 const loginId = ref("")
 const password = ref("")
+const passwordCheck = ref("")
 
 const router = useRouter()
 
@@ -14,6 +15,7 @@ const join = function() {
         userName: userName.value,
         loginId: loginId.value,
         password: password.value,
+        passwordCheck: passwordCheck.value,
     })
     .then(() => {
         router.replace({ name: 'home' })
@@ -33,6 +35,10 @@ const join = function() {
 
     <div class="mt-2">
         <el-input v-model="password" type="password" placeholder="비밀번호"/>
+    </div>
+
+    <div class="mt-2">
+        <el-input v-model="passwordCheck" type="password" placeholder="비밀번호 확인"/>
     </div>
 
     <div class="mt-2">

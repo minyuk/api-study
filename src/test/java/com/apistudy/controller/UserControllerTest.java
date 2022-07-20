@@ -1,7 +1,5 @@
 package com.apistudy.controller;
 
-import com.apistudy.domain.User;
-import com.apistudy.exception.InvalidRequest;
 import com.apistudy.repository.UserRepository;
 import com.apistudy.request.UserJoin;
 import com.apistudy.request.UserLogin;
@@ -13,11 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -128,6 +122,27 @@ class UserControllerTest {
                         .content(json)
                 )
                 .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("/login 요청 시 로그인 실패")
+    void loginFail() throws Exception {
+
+        //given
+        UserLogin request = UserLogin.builder()
+                .loginId("minyuk")
+                .password("qwer")
+                .build();
+
+        String json = objectMapper.writeValueAsString(request);
+
+        //expected
+        mockmvc.perform(post("/login")
+                        .contentType(APPLICATION_JSON)
+                        .content(json)
+                )
+                .andExpect(status().isBadRequest())
                 .andDo(print());
     }
 
