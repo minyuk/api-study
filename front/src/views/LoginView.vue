@@ -42,6 +42,10 @@ const logout = function() {
         <el-button type="primary" @click="login()">로그인</el-button>
         <el-button type="primary" @click="logout()">로그아웃</el-button>
     </div>
+
+    <div class="mt-2">
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=7b50c8cfb314efb023fa626a6919a0b5&redirect_uri=http://localhost:8080/kakao/login&response_type=code"><img src="@/assets/loginButton.png" @click="loginwithKakao"/></a>
+    </div>
 </template>
 
 <style>

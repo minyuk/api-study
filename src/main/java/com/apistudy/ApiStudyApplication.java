@@ -10,8 +10,8 @@ public class ApiStudyApplication {
 		SpringApplication.run(ApiStudyApplication.class, args);
 	}
 
+	//API key : 7b50c8cfb314efb023fa626a6919a0b5
+	//http://localhost:8080/kakao/login
 
-	//카카오 api
-	//key : 69b67b782df33be906a37fe87a9b5d26
-	//로그인 요청 : http://localhost:8080/auth/kakao/callback
+
 }
